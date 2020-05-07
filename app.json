@@ -21,8 +21,14 @@
     "assetBundlePatterns": [
       "**/*"
     ],
+    "android": {
+      "package": "com.cc.countrysearch",
+      "versionCode": 1
+    },
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.cc.countrysearch",
+      "buildNumber": "1.0.0"
     }
   }
 }

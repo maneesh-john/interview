@@ -1,8 +1,9 @@
 import React from 'react'
-import { Provider } from 'react-redux'
+import { Text, TouchableOpacity } from 'react-native'
 import configureMockStore from 'redux-mock-store'
-import { shallow } from 'enzyme'
+import { mount, shallow } from 'enzyme'
 import Button from '../components/Button'
+import Input from '../components/Button'
 
 const mockStore = configureMockStore()
 
@@ -31,7 +32,7 @@ const createProps = (props: Object) => ({
   ...props
 })
 
-describe('Render', () => {
+describe('Render button', () => {
 
   let props = createProps({ title: 'Submit', onPress: () => console.log('pressed'), disabled: true })
 
@@ -43,11 +44,23 @@ describe('Render', () => {
     }
   })
 
-  const wrapper = shallow(
+  const wrapper = mount(
     <Button
       title="Submit"
       onPress={() => console.log('pressed')}
       disabled
     />
   )
+
+  it('should render a touchable opacity', () => {
+    expect(wrapper.find(TouchableOpacity).length).toBe(1)
+  })
+
+  it('should render a text field', () => {
+    expect(wrapper.find(Text).length).toBe(1)
+  })
+
+  it('Button should be disabled', () => {
+    expect(wrapper.prop('disabled')).toBe(true)
+  })
 })
